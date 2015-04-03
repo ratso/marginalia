@@ -1,0 +1,77 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# Sokolov Stanislav <sokolst@gmail.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-03-25 14:36+0300\n"
+"PO-Revision-Date: 2015-03-25 14:42+0300\n"
+"Last-Translator: \n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+"Language: ru\n"
+"X-Generator: Poedit 1.7.5\n"
+
+#: application/__init__.py:61
+msgid "Method not found"
+msgstr "Метод не найден"
+
+#: application/__init__.py:68
+msgid "The method is not allowed for the requested URL."
+msgstr "Метод не разрешен по этому URL."
+
+#: application/__init__.py:75
+msgid "Unauthorized access is prohibited"
+msgstr "Доступ без авторизации запрещен!"
+
+#: application/controllers/notes_controller.py:30
+msgid "Note created successfully"
+msgstr "Токен успешно сгенерирован"
+
+#: application/controllers/notes_controller.py:38
+msgid "Note id is required!"
+msgstr "Необходимо указать идентификатор заметки"
+
+#: application/controllers/notes_controller.py:41
+msgid "Sorry. Invalid note id specified"
+msgstr "Извините. Указан некорректный идентификатор пользователя"
+
+#: application/controllers/notes_controller.py:43
+msgid "Sorry! It is not allowed to edit someones else notes!"
+msgstr "Редактировать чужие заметки запрещено"
+
+#: application/controllers/notes_controller.py:47
+msgid "Note updated successfully"
+msgstr "Заметка успешно обновлена"
+
+#: application/controllers/users_controller.py:21
+msgid "Sorry. Invalid user id specified"
+msgstr "Указан некорректный идентификатор пользователя"
+
+#: application/controllers/users_controller.py:30
+msgid "You need to specify email and password"
+msgstr "Вам нужно указать адрес email и пароль"
+
+#: application/controllers/users_controller.py:32
+msgid "This email is already registered"
+msgstr "Этот адрес email уже занят"
+
+#: application/controllers/users_controller.py:41
+msgid "Registration complete"
+msgstr "Регистрация завершена"
+
+#: application/controllers/users_controller.py:53
+msgid "Invalid email or password!"
+msgstr "Некорректный email или пароль"
+
+#: application/controllers/users_controller.py:57
+msgid "Token generated successful"
+msgstr "Токен успешно сгенерирован"

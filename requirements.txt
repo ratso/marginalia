@@ -1,0 +1,8 @@
+Flask>=0.10.1
+'Flask-SQLAlchemy
+SQLAlchemy>=0.9.9
+Flask-Babel
+Flask-Migrate
+flask-restful>=0.3.2
+itsdangerous
+Flask-Passlib
