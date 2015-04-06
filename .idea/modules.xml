@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/marginalia_api.iml" filepath="$PROJECT_DIR$/.idea/marginalia_api.iml" />
+      <module fileurl="file://C:/dev/projects/utils/.idea/utils.iml" filepath="C:/dev/projects/utils/.idea/utils.iml" />
     </modules>
   </component>
 </project>

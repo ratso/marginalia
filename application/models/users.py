@@ -1,28 +1,25 @@
-from application import db, app
+from application import db
+from wtforms.validators import Email
 from passlib.apps import custom_app_context as pwd_context
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 
 class Users(db.Model):
-    # __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(254), index=True, nullable=False, unique=True)
-    password_hash = db.Column(db.String(128), nullable=False)
-    # Authorisation Data: role & status
-    role = db.Column(db.SmallInteger, nullable=False)
-    status = db.Column(db.SmallInteger, nullable=False)
+    email = db.Column(db.String(254), index=True, nullable=False, unique=True, info={'validators': Email()})
+    password = db.Column(db.String(128), nullable=False)
+    role = db.Column(db.SmallInteger, nullable=False, default=1)
+    status = db.Column(db.SmallInteger, nullable=False, default=1)
     locale = db.Column(db.String(100), default='ru')
     timezone = db.Column(db.String(100), default='Europe/Moscow')
+    last_sync = db.Column(db.DateTime())
+    books = db.relationship('Books', backref='users', lazy='dynamic')
 
-    def hash_password(self, password):
-        self.password_hash = pwd_context.encrypt(password)
+    @staticmethod
+    def hash_password(password):
+        return pwd_context.encrypt(password)
 
     def verify_password(self, password):
-        return pwd_context.verify(password, self.password_hash)
-
-    def generate_auth_token(self, expiration=3600):
-        s = Serializer(app.config['SECRET_KEY'], expires_in=expiration)
-        return s.dumps({'id': self.id})
+        return pwd_context.verify(password, self.password)
 
     @staticmethod
     def try_login(email, password):
@@ -30,3 +27,10 @@ class Users(db.Model):
         if not user or not user.verify_password(password):
             return False
         return user
+
+    def __init__(self, email, password):
+        self.email = email
+        self.password = self.hash_password(password)
+
+    def __repr__(self):
+        return '<User %r>' % self.email

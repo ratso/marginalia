@@ -25,7 +25,14 @@ setup(
         'Flask-Migrate',
         'flask-restful>=0.3.2',
         'itsdangerous',
-        'Flask-Passlib'
+        'Flask-Passlib',
+        'Flask-HTTPAuth',
+        'Flask-WTF>=0.10.0',
+        'WTForms>=2.0.1',
+        'WTForms-Alchemy>=0.12.8',
+        'WTForms-Components>=0.9.5',
+        'marshmallow>=0.7.0',
+        #'flask-bcrypt'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',

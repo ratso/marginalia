@@ -1,33 +1,22 @@
 # Import flask and template operators
-from flask import Flask, g, request
+from flask import Flask
 
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
-
-# Import Babel
-from flask.ext.babel import Babel
-from config import LANGUAGES
 
 # Define the WSGI application object
 app = Flask(__name__)
 
 # Configurations
 app.config.from_object('config')
+app.url_map.strict_slashes = False
 
-babel = Babel(app)
-
-
-@babel.localeselector
-def get_locale():
-    # if a user is logged in, use the locale from the user settings
-    user = getattr(g, 'user', None)
-    if user is not None:
-        return user.locale
-    return request.accept_languages.best_match(LANGUAGES.keys())
 
 # Define the database object which is imported
 # by modules and controllers
 db = SQLAlchemy(app)
+
+from library import i18n
 
 from frontend import front_module
 app.register_blueprint(front_module, url_prefix='/')

@@ -6,6 +6,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 2.7.8 virtualenv at C:\Users\admin\flask" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="utils" />
   </component>
 </module>
 
