@@ -1,4 +1,4 @@
-MarginaliaApp.factory('User', function(Restangular) {
+MarginaliaApp.factory('User', function (Restangular) {
     var User;
     User = {
         create: function (user) {

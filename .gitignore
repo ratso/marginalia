@@ -60,3 +60,4 @@ target/
 *.db
 
 /application/static/bower_components
+/application/static/node_modules

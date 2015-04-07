@@ -1,7 +1,7 @@
-MarginaliaApp.factory('Session', function(Restangular) {
+MarginaliaApp.factory('Session', function (Restangular) {
     var Session;
     Session = {
-        create: function(data, bypassErrorInterceptor) {
+        create: function (data, bypassErrorInterceptor) {
             return Restangular
                 .one('sessions')
                 .withHttpConfig({bypassErrorInterceptor: bypassErrorInterceptor})
@@ -9,4 +9,4 @@ MarginaliaApp.factory('Session', function(Restangular) {
         }
     };
     return Session;
-})
+});

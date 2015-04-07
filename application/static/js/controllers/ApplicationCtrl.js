@@ -1,4 +1,4 @@
-MarginaliaApp.controller('ApplicationCtrl', function($scope, $location, Book, AuthService) {
+MarginaliaApp.controller('ApplicationCtrl', function ($scope, $location, Book, AuthService) {
     $scope.$on('$routeChangeStart', function (event, next) {
         if (AuthService.isAuthenticated()) {
             $scope.isLoggedIn = true;
@@ -6,8 +6,8 @@ MarginaliaApp.controller('ApplicationCtrl', function($scope, $location, Book, Au
             $scope.isLoggedIn = false;
         }
     });
- 
-    $scope.isActive = function(path) {
+
+    $scope.isActive = function (path) {
         if ($location.path().substr(0, path.length) === path) {
             if (path === "/" && $location.path() === "/") {
                 return true;
@@ -20,4 +20,4 @@ MarginaliaApp.controller('ApplicationCtrl', function($scope, $location, Book, Au
             return false;
         }
     };
-})
+});
