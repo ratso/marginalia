@@ -32,6 +32,7 @@ setup(
         'WTForms-Alchemy>=0.12.8',
         'WTForms-Components>=0.9.5',
         'marshmallow>=0.7.0',
+        'flask-triangle',
         #'flask-bcrypt'
     ],
     classifiers=[

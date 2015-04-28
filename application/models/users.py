@@ -28,6 +28,9 @@ class Users(db.Model):
             return False
         return user
 
+    def token(self):
+        return '1234567890'
+
     def __init__(self, email, password):
         self.email = email
         self.password = self.hash_password(password)

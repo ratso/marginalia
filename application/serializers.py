@@ -10,7 +10,7 @@ class BookSerializer(Serializer):
     user = fields.Nested(UserSerializer)
 
     class Meta:
-        fields = ("id", "guid", "title", "user", "date_created", "last_sync")
+        fields = ("id", "guid", "title", "date_created", "token", "last_sync")
 
 
 class NoteSerializer(Serializer):

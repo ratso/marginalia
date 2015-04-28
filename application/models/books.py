@@ -18,7 +18,8 @@ class Books(db.Model):
     def __init__(self, title):
         self.title = title
         self.guid = uuid.uuid4().hex
-        self.user_id = g.user.id
+        # self.user_id = g.user.id
+        self.user_id = 3
 
     def __repr__(self):
         return '<Book %r>' % self.title

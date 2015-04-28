@@ -4,6 +4,8 @@ from flask import Flask
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
+from flask.ext.triangle import Triangle
+
 # Define the WSGI application object
 app = Flask(__name__)
 
@@ -15,6 +17,8 @@ app.url_map.strict_slashes = False
 # Define the database object which is imported
 # by modules and controllers
 db = SQLAlchemy(app)
+
+Triangle(app)
 
 from library import i18n
 

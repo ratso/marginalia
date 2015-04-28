@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Blueprint, g
+from flask import Blueprint, g, session
 from flask.ext import restful
 #from flask.ext.bcrypt import Bcrypt
 from flask.ext.httpauth import HTTPBasicAuth
@@ -31,7 +31,6 @@ def verify_password(email, password):
     user = Users.try_login(email, password)
     if not user:
         return False
-    g.user = user
     return user
 
 
@@ -48,6 +47,11 @@ class UserView(restful.Resource):
 
 
 class SessionView(restful.Resource):
+    def get(self):
+        if 'auth' in session:
+            return session['auth']
+        return {'error': 'unauthorized'}
+
     def post(self):
         form = forms.SessionCreateForm()
         if not form.validate_on_submit():
@@ -55,17 +59,19 @@ class SessionView(restful.Resource):
 
         user = Users.try_login(form.email.data, form.password.data)
         if user:
+            session['auth'] = user
             return serializers.UserSerializer(user).data, 201
         return '', 401
 
 
 class BookListView(restful.Resource):
-    @auth.login_required
+    # @auth.login_required
     def get(self):
-        books = Books.query.filter_by(user_id=g.user.id).order_by(Books.date_created.desc()).all()
+        #books = Books.query.filter_by(user_id=g.user.id).order_by(Books.date_created.desc()).all()
+        books = Books.query.order_by(Books.date_created.desc()).all()
         return serializers.BookSerializer(books, many=True).data
 
-    @auth.login_required
+    # @auth.login_required
     def post(self):
         form = forms.BookCreateForm()
         if not form.validate_on_submit():
@@ -77,7 +83,7 @@ class BookListView(restful.Resource):
 
 
 class NoteListView(restful.Resource):
-    @auth.login_required
+    # @auth.login_required
     def get(self, book_id):
         notes = Notes.query.filter_by(book_id=book_id).order_by(
             Notes.date_updated.desc(),
